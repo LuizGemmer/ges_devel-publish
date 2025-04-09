@@ -1,6 +1,7 @@
 services:
     db:
       image: postgres:17
+      container_name: django-todo-db
       environment:
         POSTGRES_DB: ${DB_NAME}
         POSTGRES_USER: ${DB_USER}
@@ -14,7 +15,7 @@ services:
     
     django-web:
       build: .
-      container_name: django-docker
+      container_name: django-todo-app
       ports:
         - "8000:8000"
       depends_on:
@@ -27,7 +28,6 @@ services:
         DJANGO_DATABASE_ENGINE: ${DJANGO_DATABASE_ENGINE}
         DB_NAME: ${DB_NAME}
         DB_USER: ${DB_USER}
-    
         DB_PASSWORD: ${DB_PASSWORD}
         DB_URL: ${DB_URL}
         DB_PORT: ${DB_PORT}
