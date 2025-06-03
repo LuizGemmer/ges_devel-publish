@@ -11,15 +11,11 @@
 
     <nav class="navbar bg-body-tertiary container-fluid">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'tasks_index' %}">Tasks</a>
-            <form action="{% url 'logout' %}" method="post">
-                {% csrf_token %}
-                <button class="btn btn-outline-danger" type="submit">Logout</button>
-            </form>
+            <a class="navbar-brand" href="#">Tasks</a>
         </div>
     </nav>
 
-    <section class="container mt-4">
+    <section class="container">
         {% block content %}
         {% endblock content %}
     </section>

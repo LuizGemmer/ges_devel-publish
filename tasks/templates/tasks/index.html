@@ -1,0 +1,33 @@
+{% extends "./base.html" %}
+
+{% block title %}Tasks{% endblock title %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Lista de Tarefas</h1>
+    <a href="{% url 'tasks_create' %}" class="btn btn-primary">Criar Tarefa</a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Descrição</th>
+            <th scope="col">Criada</th>
+            <th scope="col">Data Prevista</th>
+            <th scope="col">Data Encerramento</th>
+            <th scope="col">Situacao</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in tasks_list %}
+        <tr id="{{ task.id }}">
+            <td>{{ task.descricao }}</td>
+            <td>{{ task.created_at }}</td>
+            <td>{{ task.data_prevista }}</td>
+            <td>{{ task.data_conclusao }}</td>
+            <td>{{ task.situacao }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
+    
