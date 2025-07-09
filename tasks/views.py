@@ -16,8 +16,8 @@ class TasksIndex(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         return Tasks.objects.all()
     
-class CreateTaskView(LoginRequiredMixin, generic.UpdateView):
-    template_name = 'tasks/create_update_task.html'
+class CreateTaskView(LoginRequiredMixin, generic.CreateView):
+    template_name = 'tasks/create_task.html'
     model = Tasks
     form_class = TaskForm
     success_url = reverse_lazy('tasks_index')
@@ -25,12 +25,12 @@ class CreateTaskView(LoginRequiredMixin, generic.UpdateView):
     def form_valid(self, form):
         data = form.cleaned_data
         
-        ## If the task is completed and the completion date is not set, set it to now
-        if data['situacao'] == 'Concluída' and data['data_conclusao'] is None:
-            form.instance.data_conclusao = timezone.now()
+        # ## If the task is completed and the completion date is not set, set it to now
+        # if data['situacao'] == 'Concluída' and data['data_conclusao'] is None:
+        #     form.instance.data_conclusao = timezone.now()
 
-        ## If the task is not completed and the completion date is set, return an error to the user
-        if data['situacao'] != 'Concluida' and data['data_conclusao'] is not None:
-            form.add_error('data_conclusao', 'Data de conclusão só pode ser preenchida se a tarefa estiver concluída.')
+        # ## If the task is not completed and the completion date is set, return an error to the user
+        # if data['situacao'] != 'Concluida' and data['data_conclusao'] is not None:
+        #     form.add_error('data_conclusao', 'Data de conclusão só pode ser preenchida se a tarefa estiver concluída.')
 
         return super().form_valid(form)
