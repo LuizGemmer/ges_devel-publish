@@ -1,3 +1,4 @@
+from django.forms import ValidationError
 from django.test import TestCase
 from django.utils import timezone
 from datetime import timedelta
@@ -133,7 +134,7 @@ class TasksModelTest(TestCase):
     def test_invalid_situacao_choice(self):
         # This bypasses form validation, so model allows it unless validated manually
         self.task.situacao = "invalido"
-        with self.assertRaises(ValueError):
+        with self.assertRaises(ValidationError):
             self.task.full_clean()  # This triggers model validation
 
     def test_created_updated_timestamps(self):
