@@ -2,7 +2,7 @@ services:
   django-web:
     build:
       context: .
-    image: django-todo:${TAG:-latest}
+    image: ${REPO:-luizgemmer}django-todo:${TAG:-latest}
     container_name: ${NAME:-django-todo-app}
     restart: unless-stopped
     ports:
