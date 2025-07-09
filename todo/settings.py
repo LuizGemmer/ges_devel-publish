@@ -81,9 +81,9 @@ DATABASES = {
         'ENGINE': os.environ.get('DJANGO_DATABASE_ENGINE', 'todo'),
         'NAME': os.environ.get('DB_NAME', 'todo'),
         'USER': os.environ.get('DB_USER', 'postgres'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', '1234'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'p_apel'),
         'HOST': os.environ.get('DB_URL', 'localhost'),
-        'PORT': os.environ.get('DB_PORT', '5432'),
+        'PORT': 5453 #os.environ.get('DB_PORT', '5433'),
     }
 }
 
