@@ -21,9 +21,9 @@ class Tasks(models.Model):
     def __str__(self):
         return self.descricao
     
-# class Category(models.Model):
-#     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-#     descricao = models.CharField(max_length=255)
+class Category(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    descricao = models.CharField(max_length=255)
 
 class Test(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
